@@ -2,7 +2,7 @@ let computerWinsCount = 0;
 let playerWinsCount = 0;
 let playedRoundsCount = 0;
 
-function getComputerChoice(){
+/* function getComputerChoice(){
 
      //Because of Math.round anything between 3 and 3.4 will result in 3
     let choice = Math.round(Math.random(3.4));
@@ -160,3 +160,4 @@ function showResult(){
 
 playWithMe();
 showResult();
+*/

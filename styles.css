@@ -1,0 +1,66 @@
+body {
+
+    background-color: black;
+
+}
+button {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+h1 {
+    
+    font-family: "Orbitron";
+    color: white;
+    text-align: center;
+    font-size: 72px;
+
+}
+h2 {
+    font-family: "Orbitron";
+    color: white;
+    font-size: 36px;
+    
+
+}
+p {
+    font-family: "Orbitron";
+    color: white;
+    font-weight: bold;
+    font-size: 36px;
+}
+i {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.options{
+    min-width: 80%;
+    
+    min-height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+}
+
+.rock, .scissors, .paper{
+    min-height: 20rem;
+    color: white;
+    font-size: 144px;
+    border: 1rem white solid;
+    min-width: 20rem;
+}
+
+.score{
+    min-width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
