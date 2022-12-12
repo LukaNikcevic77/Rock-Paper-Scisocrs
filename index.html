@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script.js" defer></script>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Orbitron:300,400,600,700&amp;lang=en" />
      <link href="styles.css" rel="stylesheet">
      <link rel="stylesheet" href="//use.fontawesome.com/releases/v6.2.0/css/all.css">
@@ -11,16 +11,19 @@
     <title>Rock-Paper-Scissors | Luka Nikcevic</title>
 </head>
 <body>
-   <h1>Round: </h1>
+   <div class="round-div"><h1 >Round: </h1><h1 id="round-text"></h1></div>
    <div class="options">
-    <button><div class="rock"><i class="fa-solid fa-hand-back-fist"></i></div></button>
-    <button><div class="paper"><i class="fa-solid fa-hand"></i></div></button>
-    <button><div class="scissors"><i class="fa-solid fa-hand-scissors"></i></div></button>
+    <button id="rock"><div class="rock"><i class="fa-solid fa-hand-back-fist"></i></div></button>
+    <button id="paper"><div class="paper"><i class="fa-solid fa-hand"></i></div></button>
+    <button id="scissors"><div class="scissors"><i class="fa-solid fa-hand-scissors"></i></div></button>
    </div>
    <div class="score">
-    <h2>Player</h2>
+    <h2 >Player</h2><h2 class="player-score"></h2>
     <p>:</p>
-   <h2>Computer</h2>
+   <h2 ></h2><h2 class="computer-score"></h2>
+</div>
+<div id ="reset" class="reset">
+
 </div>
    
 </body>

@@ -2,7 +2,163 @@ let computerWinsCount = 0;
 let playerWinsCount = 0;
 let playedRoundsCount = 0;
 
-/* function getComputerChoice(){
+const body = document.querySelector("body");
+const zavrsniDiv = document.querySelector("#reset");
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const round = document.querySelector("#round-text");
+
+const playerPoints = document.querySelector(".player-score");
+const computerPoints = document.querySelector(".computer-score");
+
+const playerWinsText = document.createElement("h2");
+const computerWinsText = document.createElement("h2");
+const drawText = document.createElement("h2");
+
+const resetbutton = document.createElement("button");
+
+resetbutton.textContent = "Play Again!";
+resetbutton.style.color = "white";
+resetbutton.style.backgroundColor = "transparent";
+resetbutton.style.border = "2px white solid";
+resetbutton.style.borderRadius = "15px";
+
+playerWinsText.textContent = "You were lucky...You win!";
+computerWinsText.textContent = "I win because you are unluckiest person alive!";
+drawText.textContent = "I'll see you again, but next time will be last time we see each other!";
+
+playerWinsText.style.fontSize = "24px";
+playerWinsText.style.textAlign = "center";
+playerWinsText.style.color = "green";
+playerWinsText.style.fontWeight = "bold";
+
+computerWinsText.style.fontSize = "24px";
+computerWinsText.style.textAlign = "center";
+computerWinsText.style.color = "red";
+computerWinsText.style.fontWeight = "bold";
+
+drawText.style.fontSize = "24px";
+drawText.style.textAlign = "center";
+drawText.style.color = "white";
+drawText.style.fontWeight = "bold";
+
+round.textContent += playedRoundsCount;
+playerPoints.textContent = " " + playerWinsCount;
+computerPoints.textContent = computerWinsCount + " " + "Computer";
+
+
+rock.addEventListener("click", Rock);
+paper.addEventListener("click", Paper);
+scissors.addEventListener("click", Scissors);
+resetbutton.addEventListener("click", e = () => window.location.reload());
+
+
+function Rock(e){
+
+     let compChoice = getComputerChoice();
+     
+     switch(compChoice){
+          case "rock":
+               playerWinsCount += 1;
+               playerPoints.textContent = " " + playerWinsCount;
+               computerWinsCount += 1;
+               computerPoints.textContent = computerWinsCount + " " + "Computer";
+               break;
+          case "scissors":
+               playerWinsCount += 1;
+               playerPoints.textContent = " " + playerWinsCount;
+               break;
+          case "paper":
+               computerWinsCount += 1;
+               computerPoints.textContent = computerWinsCount + " " + "Computer";
+               break;
+     }
+
+     playedRoundsCount += 1;
+     round.textContent = playedRoundsCount;
+
+     if(playedRoundsCount == 5) {
+          paper.removeEventListener("click", Paper)
+          rock.removeEventListener("click", Rock)
+          scissors.removeEventListener("click", Scissors)
+          showResult();
+     };
+     
+}
+
+function Paper(e){
+     
+     let compChoice = getComputerChoice();
+
+     switch(compChoice){
+
+          case "rock":
+               playerWinsCount += 1;
+               playerPoints.textContent = " " + playerWinsCount;
+               break;
+          case "paper":
+               playerWinsCount += 1;
+               playerPoints.textContent = " " + playerWinsCount;
+               computerWinsCount += 1;
+               computerPoints.textContent = computerWinsCount + " " + "Computer";
+               break;
+          case "scissors":
+               computerWinsCount += 1;
+               computerPoints.textContent = computerWinsCount + " " + "Computer";
+               break;
+     }
+
+     playedRoundsCount += 1;
+     round.textContent = playedRoundsCount;
+
+          if(playedRoundsCount == 5) {
+               paper.removeEventListener("click", Paper)
+               rock.removeEventListener("click", Rock)
+               scissors.removeEventListener("click", Scissors)
+               showResult();
+          };
+          
+
+}
+
+function Scissors(e){
+     let compChoice = getComputerChoice();
+
+     switch(compChoice){
+
+          case "paper":
+               playerWinsCount += 1;
+               playerPoints.textContent = " " + playerWinsCount;
+               break;
+          case "scissors":
+               playerWinsCount += 1;
+               playerPoints.textContent = " " + playerWinsCount;
+               computerWinsCount += 1;
+               computerPoints.textContent = computerWinsCount + " " + "Computer";
+               break;
+          case "rock":
+               computerWinsCount += 1;
+               computerPoints.textContent = computerWinsCount + " " + "Computer";
+               break;
+     }
+
+     playedRoundsCount += 1;
+     round.textContent = playedRoundsCount;
+
+     if(playedRoundsCount == 5) {
+          paper.removeEventListener("click", Paper)
+          rock.removeEventListener("click", Rock)
+          scissors.removeEventListener("click", Scissors) 
+          showResult();
+     };
+    
+}
+  
+
+
+ function getComputerChoice(){
 
      //Because of Math.round anything between 3 and 3.4 will result in 3
     let choice = Math.round(Math.random(3.4));
@@ -22,135 +178,27 @@ let playedRoundsCount = 0;
 
 }
 
-function playWithMe(){
 
-   while(playedRoundsCount != 5){
-
-     playGame()
-
-   }
-}
-
-function playGame(){
-
-    let compChoice = getComputerChoice();
-    let userChoice = window.prompt("Chose one: Rock, Paper, Scissors").toLowerCase();
-    console.log("Computer chose --- " + compChoice);
-
-    switch(userChoice){
-
-        case "rock":
-
-          if(compChoice == userChoice){
-
-               alert("Two rocks are rock solid, it's a draw!");
-               alert("Player: " + playerWinsCount + " | Computer: " + computerWinsCount);
-               alert("Round: " + (playedRoundsCount + 1) + " played!");
-               return playedRoundsCount += 1;
-
-            }
-            
-          else if(compChoice == "paper"){
-
-               computerWinsCount += 1;
-               alert("I wraped you up, I win!")
-               alert("Player: " + playerWinsCount + " | Computer: " + (computerWinsCount + 1));
-               alert("Round: " + (playedRoundsCount + 1) + " played!");
-               return (playedRoundsCount += 1, computerWinsCount += 1);
-
-            }
-
-          else {
-                
-               alert("You broke me cause you are harder then steel, I lose!")
-               alert("Player: " + (playerWinsCount + 1) + " | Computer: " + computerWinsCount);
-               alert("Round: " + (playedRoundsCount + 1) + " played!");
-               return (playerWinsCount += 1, playedRoundsCount += 1);
-
-            }
-
-        case "paper":
-
-          if(compChoice == userChoice){
-
-               alert("That's a lot of papaer, maybe we could write something down... It's a draw!")
-               alert("Player: " + playerWinsCount + " | Computer: " + computerWinsCount);
-               alert("Round: " + (playedRoundsCount + 1) + " played!");
-               return playedRoundsCount += 1;
-
-            }
-
-          else if(compChoice == "scissors"){
-           
-               alert("I cut you up, I win!");
-               alert("Player: " + playerWinsCount + " | Computer: " + (computerWinsCount + 1));
-               alert("Round: " + (playedRoundsCount + 1) + " played!");
-               return (playedRoundsCount += 1,computerWinsCount += 1);
-
-        }
-
-          else {
-            
-               alert("You wraped around me, I lose!");
-               alert("Player: " + (playerWinsCount + 1) + " | Computer: " + computerWinsCount);
-               alert("Round: " + (playedRoundsCount + 1) + " played!");
-               return (playerWinsCount += 1, playedRoundsCount += 1);
-
-        }
-
-        case "scissors":
-
-          if(compChoice == userChoice){
-
-               alert("You're weirdo... It's a draw!");
-               alert("Player: " + playerWinsCount + " | Computer: " + computerWinsCount);
-               alert("Round: " + (playedRoundsCount + 1) + " played!");
-               return (playedRoundsCount += 1);
-
-            }
-
-          else if(compChoice == "rock"){
-                    
-               alert("I break you cause I am harder then steel, I win!");
-               alert("Player: " + playerWinsCount + " | Computer: " + (computerWinsCount + 1));
-               alert("Round: " + (playedRoundsCount + 1) + " played!");
-               return (computerWinsCount += 1, playedRoundsCount += 1);
-
-        }
-
-          else {
-                
-                 alert("You cut me up, you win!");
-                 alert("Player: " + (playerWinsCount + 1) + " | Computer: " + computerWinsCount);
-                 alert("Round: " + (playedRoundsCount + 1) + " played!");
-                 return (playerWinsCount += 1, playedRoundsCount += 1);
-
-            }
-
-        default:
-
-            alert("Check your spelling you fool!");
-            playGame();
-
-    }
-}
 function showResult(){
 
           if(computerWinsCount > playerWinsCount){
         
-               alert("I win because you are unluckiest person alive!");
+               zavrsniDiv.appendChild(computerWinsText)
+               zavrsniDiv.appendChild(resetbutton);
 
      }
 
           else if(computerWinsCount == playerWinsCount){
    
-               alert("I'll see you again, but next time will be last time we see each other!");
+               zavrsniDiv.appendChild(drawText);
+               zavrsniDiv.appendChild(resetbutton);
 
      }
 
           else {
     
-               alert("You were lucky! You win!")
+               zavrsniDiv.appendChild(playerWinsText);
+               zavrsniDiv.appendChild(resetbutton);
 
      }
 
@@ -158,6 +206,4 @@ function showResult(){
 
 
 
-playWithMe();
-showResult();
-*/
+

@@ -37,7 +37,11 @@ i {
     text-align: center;
     margin-top: 5rem;
 }
-
+.round-div{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
 .options{
     min-width: 80%;
     
@@ -62,5 +66,13 @@ i {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 1.5rem;
+}
+.reset{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    min-width: 100%;
+    height: 2rem;
 }
